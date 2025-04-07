@@ -20,6 +20,7 @@ def put_text_with_background(img, text, position, font_scale, thickness, text_co
     cv2.putText(img, text, (text_offset_x, text_offset_y), font, font_scale, text_color, thickness)
 
 while True:
+    spaces = 0
     if cap.get(cv2.CAP_PROP_POS_FRAMES) == cap.get(cv2.CAP_PROP_FRAME_COUNT):
         cap.set(cv2.CAP_PROP_POS_FRAMES, 0)
     success, img = cap.read()
@@ -47,10 +48,12 @@ while True:
             put_text_with_background(img, "Not Available", (start_x, start_y + height - 10),
                                      0.3, 1, (0, 0, 255), (255, 192, 203))  # White text, Pink background
         else:
+            spaces += 1
             cv2.rectangle(img, (start_x, start_y), (start_x + width, start_y + height), (0, 255, 0), 4)
             put_text_with_background(img, "You Can Park", (start_x, start_y + height - 10),
                                      0.3, 1, (255, 0, 0), (255, 192, 203))  # White text, Pink background
-
+    cvzone.putTextRect(img, f'Free: {spaces}/{len(positions)}', (20, 40), thickness=3, offset=20,
+                       colorR=(0, 200, 0))
     cv2.imshow('Image', img)
 
     if cv2.waitKey(1) & 0xFF == ord('q'):
