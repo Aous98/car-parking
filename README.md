@@ -1,3 +1,3 @@
 # car-parking
-Mini computer vision project for detecting available spots for parking cars
-![result](https://github.com/user-attachments/assets/779726df-6f40-4765-9c5f-133e2c3b4674)
+Mini computer vision project for detecting and counting available spots for parking cars
+![sample output](https://github.com/user-attachments/assets/1fccb8f5-5a95-4069-99ae-ba28447aeef0)
